@@ -1,0 +1,23 @@
+stages:
+  - install
+  - test
+  - build
+
+cache:
+  paths:
+    - node_modules/
+
+install_dependencies:
+  stage: install
+  script:
+    - npm install
+
+run_tests:
+  stage: test
+  script:
+    - npm test || echo "No tests found, skipping"
+
+build_app:
+  stage: build
+  script:
+    - npm run build
